@@ -1,0 +1,81 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "further network assignment",
+      "version": "1.0.0",
+      "title": "Get User and Album",
+      "license": {
+        "name": "Ramahadi Moheane"
+       
+      }
+    },
+
+
+    "tags": [
+      {
+        "name": "ALBUM REQUEST",
+        "description": "request users and albums based on users"
+      }
+    ],
+
+    
+    "paths": {
+      "/users": {
+        "get": {
+          "tags": [
+            "user request"
+          ],
+          "summary": "Returns users",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+        },
+        "/users/{user_id}": {
+            "parameters": [
+              {
+                "name": "user_id",
+                "in": "path",
+                "required": true,
+                "description": "get ablum by id",
+                "type": "int"
+              }
+            ],
+            "get": {
+              "tags": [
+                "Album Request"
+              ],
+              "summary": "Get album request with given user_id",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "user_id",
+                  "required": true,
+                  "description": "album Request user_id"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK"
+                },
+                "400": {
+                  "description": "Failed. Misunderstood Request."
+                }
+              }
+            },
+        "albumRequests": {
+          "type": "object",
+          "properties": {
+            "bookRequest": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/albumRequests"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
